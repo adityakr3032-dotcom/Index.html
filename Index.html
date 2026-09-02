@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Teachers' Day Shivani Ma'am 🌸</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 850px;
+    background: rgba(255,255,255,0.14);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    text-align: center;
+}
+
+h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    margin: 15px 0;
+}
+
+.subtitle {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+button {
+    border: none;
+    padding: 13px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 8px;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.06);
+}
+
+.start-btn {
+    background: #ffd166;
+    color: #333;
+}
+
+.option {
+    display: block;
+    width: 90%;
+    margin: 12px auto;
+    background: white;
+    color: #333;
+}
+
+.option:hover {
+    background: #ffd166;
+}
+
+.correct {
+    background: #6ee7b7 !important;
+}
+
+.wrong {
+    background: #ff8585 !important;
+}
+
+#quizBox {
+    display: none;
+}
+
+#result {
+    display: none;
+}
+
+.progress {
+    width: 100%;
+    height: 10px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 20px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #ffd166;
+    transition: 0.4s;
+}
+
+.score {
+    font-size: 20px;
+    margin: 15px;
+}
+
+.final-message {
+    background: rgba(255,255,255,0.15);
+    padding: 25px;
+    border-radius: 20px;
+    margin: 20px 0;
+    line-height: 1.7;
+}
+
+.heart {
+    font-size: 45px;
+    animation: beat 1s infinite;
+}
+
+@keyframes beat {
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.floating {
+    animation: float 2s infinite;
+}
+
+.small {
+    opacity: 0.8;
+    font-size: 14px;
+}
+
+.next-btn {
+    background: #06d6a0;
+    color: white;
+}
+
+.restart-btn {
+    background: #ef476f;
+    color: white;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 18px;
+    background: #ffd166;
+    color: #333;
+    border-radius: 20px;
+    margin: 8px;
+    font-weight: bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HOME -->
+
+<div id="home">
+
+<div class="heart">💗</div>
+
+<h1 class="floating">
+Happy Teachers' Day! 🌸
+</h1>
+
+<h2>Dear Shivani Ma'am 👩‍💻</h2>
+
+<p class="subtitle">
+A little surprise for our amazing Computer Ma'am! 💻❤️
+</p>
+
+<div class="final-message">
+
+<p>
+Welcome to your very own Teachers' Day Quiz! 🎉
+</p>
+
+<br>
+
+<p>
+Let's see how well you know your students
+and how much your students know about you! 😂
+</p>
+
+<br>
+
+<span class="badge">20 Fun Questions 🎮</span>
+
+<span class="badge">Computer Edition 💻</span>
+
+<span class="badge">Made by Aditya ❤️</span>
+
+</div>
+
+<button class="start-btn" onclick="startQuiz()">
+🚀 Start the Quiz
+</button>
+
+<p class="small">
+Made with ❤️ by Aditya
+</p>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div id="quizBox">
+
+<h2 id="questionNumber"></h2>
+
+<div class="progress">
+
+<div class="progress-bar" id="progressBar"></div>
+
+</div>
+
+<h2 id="question"></h2>
+
+<div id="options"></div>
+
+<p class="score">
+⭐ Score: <span id="score">0</span>
+</p>
+
+<button
+class="next-btn"
+id="nextBtn"
+onclick="nextQuestion()"
+style="display:none;">
+
+Next Question ➡️
+
+</button>
+
+</div>
+
+
+<!-- RESULT -->
+
+<div id="result">
+
+<div class="heart">
+🎉
+</div>
+
+<h1>
+Quiz Completed! 🥳
+</h1>
+
+<h2>
+Shivani Ma'am, Your Score:
+</h2>
+
+<h1 id="finalScore"></h1>
+
+<div class="final-message">
+
+<h2 id="resultTitle"></h2>
+
+<p id="resultMessage"></p>
+
+<br>
+
+<p>
+💻 Thank you for making Computer classes
+interesting, fun and memorable!
+</p>
+
+<br>
+
+<p>
+🌸 Happy Teachers' Day, Shivani Ma'am! 🌸
+</p>
+
+<br>
+
+<p>
+We may sometimes make you say:
+</p>
+
+<br>
+
+<p>
+<b>
+"Bachoo, dekho main tumhe maarna nahi chahti...
+tum shanti se padho!" 😂😭
+</b>
+</p>
+
+<br>
+
+<p>
+But honestly, we are really lucky
+to have a teacher like you. ❤️
+</p>
+
+<br>
+
+<h2>
+You are 1000/10! 🥹❤️
+</h2>
+
+<br>
+
+<p>
+<b>Made with ❤️ by Aditya</b>
+</p>
+
+</div>
+
+<button
+class="restart-btn"
+onclick="restartQuiz()">
+
+🔄 Play Again
+
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+
+const questions = [
+
+/* 1 */
+
+{
+question:
+"💻 What is Shivani Ma'am's most iconic line?",
+
+options: [
+
+"Let's go home! 🏠",
+
+"Bachoo, dekho main tumhe maarna nahi chahti... tum shanti se padho! 😂",
+
+"Okay guys, party time! 🎉",
+
+"Everyone take a holiday!"
+
+],
+
+answer: 1
+},
+
+
+/* 2 */
+
+{
+question:
+"😂 When Ma'am says 'Bachoo, dekho...' what should students do?",
+
+options: [
+
+"Start laughing 😭",
+
+"Open the book and study peacefully 📚",
+
+"Run away 🏃",
+
+"Start dancing 💃"
+
+],
+
+answer: 1
+},
+
+
+/* 3 */
+
+{
+question:
+"👩‍💻 What is the most dangerous sentence in Computer class?",
+
+options: [
+
+"Good morning Ma'am",
+
+"Ma'am, I have a doubt",
+
+"Ma'am, woh nahi ho raha 😭",
+
+"Ma'am, can we do a practical?"
+
+],
+
+answer: 2
+},
+
+
+/* 4 */
+
+{
+question:
+"👥 What is the BEST part when everyone studies in groups?",
+
+options: [
+
+"Learning together 🤝",
+
+"Sleeping 😴",
+
+"Doing nothing 😂",
+
+"Waiting for the bell 🔔"
+
+],
+
+answer: 0
+},
+
+
+/* 5 */
+
+{
+question:
+"💻 When everyone makes groups and Ma'am starts teaching, the class becomes...",
+
+options: [
+
+"Super boring 😴",
+
+"More fun, interactive and productive! 🔥",
+
+"Completely silent 🤐",
+
+"A football match ⚽"
+
+],
+
+answer: 1
+},
+
+
+/* 6 */
+
+{
+question:
+"😂 What happens when the whole class is talking and Ma'am walks in?",
+
+options: [
+
+"Everyone suddenly becomes innocent 😇",
+
+"Everyone starts dancing",
+
+"Everyone leaves the classroom",
+
+"Everyone starts sleeping"
+
+],
+
+answer: 0
+},
+
+
+/* 7 */
+
+{
+question:
+"❤️ What makes Shivani Ma'am different from an ordinary teacher?",
+
+options: [
+
+"She teaches really well",
+
+"She understands her students",
+
+"She is friendly and caring",
+
+"ALL OF THESE! 🌸"
+
+],
+
+answer: 3
+},
+
+
+/* 8 */
+
+{
+question:
+"😭 If Ma'am says 'This is very easy', students think...",
+
+options: [
+
+"Yesss! 😎",
+
+"Oh no... something is coming 😭",
+
+"Let's celebrate 🎉",
+
+"Let's go home 🏃"
+
+],
+
+answer: 1
+},
+
+
+/* 9 */
+
+{
+question:
+"👀 When Ma'am is explaining something important, students should...",
+
+options: [
+
+"Listen carefully",
+
+"Ask doubts",
+
+"Start their own group discussion 😂",
+
+"Run away"
+
+],
+
+answer: 0
+},
+
+
+/* 10 */
+
+{
+question:
+"🤝 What is the most fun way to learn in Ma'am's class?",
+
+options: [
+
+"Group learning",
+
+"Practical activities",
+
+"Discussing with friends",
+
+"All of these 💻❤️"
+
+],
+
+answer: 3
+},
+
+
+/* 11 */
+
+{
+question:
+"😂 Ma'am says: 'Are you listening?' The class:",
+
+options: [
+
+"Yes Ma'am! 😇",
+
+"Suddenly becomes VERY quiet 🤐",
+
+"Starts looking at the computer",
+
+"All of the above 😂"
+
+],
+
+answer: 3
+},
+
+
+/* 12 */
+
+{
+question:
+"💗 Complete this: Shivani Ma'am is ______.",
+
+options: [
+
+"Kind",
+
+"Patient",
+
+"Super supportive",
+
+"Way too good! ❤️"
+
+],
+
+answer: 3
+},
+
+
+/* 13 */
+
+{
+question:
+"📚 What do students secretly love about group study?",
+
+options: [
+
+"Learning together",
+
+"Helping each other",
+
+"Having fun while learning 😂",
+
+"ALL OF THESE!"
+
+],
+
+answer: 3
+},
+
+
+/* 14 */
+
+{
+question:
+"🤣 If students are making too much noise, Ma'am is probably thinking...",
+
+options: [
+
+"Wow, peaceful class! 😌",
+
+"Bachoo... please shanti se padho 😭",
+
+"What a beautiful concert 🎶",
+
+"Let's have a party!"
+
+],
+
+answer: 1
+},
+
+
+/* 15 */
+
+{
+question:
+"💻 Which subject becomes more interesting because of Shivani Ma'am?",
+
+options: [
+
+"Computer Science",
+
+"Computer Science",
+
+"Obviously Computer Science 😂",
+
+"ALL OF THE ABOVE!"
+
+],
+
+answer: 3
+},
+
+
+/* 16 */
+
+{
+question:
+"🌟 What is Ma'am's biggest superpower?",
+
+options: [
+
+"Explaining difficult things easily 🧠",
+
+"Handling a whole class 😂",
+
+"Being patient with students ❤️",
+
+"ALL OF THESE! 🦸‍♀️"
+
+],
+
+answer: 3
+},
+
+
+/* 17 */
+
+{
+question:
+"😂 When Ma'am is teaching and everyone is busy in their groups, students are probably...",
+
+options: [
+
+"Learning something new 💻",
+
+"Discussing the topic 🤝",
+
+"Having a little fun 😂",
+
+"Doing ALL OF THESE!"
+
+],
+
+answer: 3
+},
+
+
+/* 18 */
+
+{
+question:
+"😎 According to Shivani Ma'am, Aditya is probably best known for...",
+
+options: [
+
+"Creative ideas 🎨",
+
+"Trying new things 🔥",
+
+"Being curious and asking questions 🤔",
+
+"ALL OF THE ABOVE! 😂❤️"
+
+],
+
+answer: 3
+},
+
+
+/* 19 */
+
+{
+question:
+"🥹 What should students always remember about Shivani Ma'am?",
+
+options: [
+
+"She always tries to help",
+
+"She genuinely cares about students",
+
+"She makes learning enjoyable",
+
+"ALL OF THESE ❤️"
+
+],
+
+answer: 3
+},
+
+
+/* 20 */
+
+{
+question:
+"🎉 FINAL QUESTION: What do we want to say to Shivani Ma'am?",
+
+options: [
+
+"Thank you for teaching us ❤️",
+
+"Thank you for being so kind 🌸",
+
+"You're an amazing Computer Ma'am! 💻",
+
+"ALL OF THE ABOVE! 🥹❤️"
+
+],
+
+answer: 3
+}
+
+];
+
+
+let currentQuestion = 0;
+
+let score = 0;
+
+let answered = false;
+
+
+function startQuiz() {
+
+document.getElementById("home").style.display = "none";
+
+document.getElementById("quizBox").style.display = "block";
+
+currentQuestion = 0;
+
+score = 0;
+
+showQuestion();
+
+}
+
+
+function showQuestion() {
+
+answered = false;
+
+const q = questions[currentQuestion];
+
+document.getElementById("questionNumber").innerText =
+"Question " +
+(currentQuestion + 1) +
+" of " +
+questions.length;
+
+document.getElementById("question").innerText =
+q.question;
+
+document.getElementById("score").innerText =
+score;
+
+
+const progress =
+(currentQuestion / questions.length) * 100;
+
+document.getElementById("progressBar").style.width =
+progress + "%";
+
+
+const optionsBox =
+document.getElementById("options");
+
+optionsBox.innerHTML = "";
+
+
+q.options.forEach((option,index) => {
+
+const button =
+document.createElement("button");
+
+button.className = "option";
+
+button.innerText = option;
+
+button.onclick = function() {
+
+selectAnswer(index,button);
+
+};
+
+optionsBox.appendChild(button);
+
+});
+
+
+document.getElementById("nextBtn").style.display =
+"none";
+
+}
+
+
+function selectAnswer(index,button) {
+
+if(answered) return;
+
+answered = true;
+
+const correctAnswer =
+questions[currentQuestion].answer;
+
+const buttons =
+document.querySelectorAll(".option");
+
+
+buttons.forEach(btn => {
+
+btn.disabled = true;
+
+});
+
+
+if(index === correctAnswer) {
+
+button.classList.add("correct");
+
+score++;
+
+document.getElementById("score").innerText =
+score;
+
+}
+
+else {
+
+button.classList.add("wrong");
+
+buttons[correctAnswer]
+.classList.add("correct");
+
+}
+
+
+document.getElementById("nextBtn").style.display =
+"inline-block";
+
+}
+
+
+function nextQuestion() {
+
+currentQuestion++;
+
+
+if(currentQuestion < questions.length) {
+
+showQuestion();
+
+}
+
+else {
+
+showResult();
+
+}
+
+}
+
+
+function showResult() {
+
+document.getElementById("quizBox").style.display =
+"none";
+
+document.getElementById("result").style.display =
+"block";
+
+
+document.getElementById("finalScore").innerText =
+score + " / " + questions.length;
+
+
+let title = "";
+
+let message = "";
+
+
+if(score === 20) {
+
+title = "🏆 PERFECT SCORE!";
+
+message =
+"OMG Ma'am! You know everything! 😂 You officially passed the Shivani Ma'am Quiz with flying colours! ❤️";
+
+}
+
+else if(score >= 15) {
+
+title = "🌟 AMAZING!";
+
+message =
+"Wow Ma'am! You know your students really well! 👩‍💻🔥";
+
+}
+
+else if(score >= 10) {
+
+title = "😊 GREAT JOB!";
+
+message =
+"Pretty good Ma'am! But your students still have some secrets! 😂❤️";
+
+}
+
+else {
+
+title = "😂 NICE TRY!";
+
+message =
+"Don't worry Ma'am! You are still 1000/10 as a teacher! ❤️🌸";
+
+}
+
+
+document.getElementById("resultTitle").innerText =
+title;
+
+document.getElementById("resultMessage").innerText =
+message;
+
+}
+
+
+function restartQuiz() {
+
+document.getElementById("result").style.display =
+"none";
+
+document.getElementById("home").style.display =
+"block";
+
+currentQuestion = 0;
+
+score = 0;
+
+}
+
+</script>
+
+</body>
+  </html>
